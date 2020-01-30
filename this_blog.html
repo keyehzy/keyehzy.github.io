@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2020-01-30 qui 11:58 -->
+<!-- 2020-01-30 qui 12:07 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How I made this blog</title>
@@ -27,29 +27,29 @@ By relevant stuff I mean:
 This is the minimal configuration that you need to export a html like this.
 </p>
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="linenr"> 1: </span> '(org-html-creator-string "")
-<span id="coderef-html5" class="coderef-off"><span class="linenr"> 2: </span> '(org-html-doctype "html5")</span>
-<span class="linenr"> 3: </span> '(org-html-head-include-default-style nil)
-<span class="linenr"> 4: </span> '(org-html-head-include-scripts nil)
-<span class="linenr"> 5: </span> '(org-html-htmlize-output-type nil)
-<span class="linenr"> 6: </span> '(org-html-infojs-template "")
-<span class="linenr"> 7: </span> '(org-html-mathjax-options
-<span class="linenr"> 8: </span>   (quote
-<span id="coderef-mathjax" class="coderef-off"><span class="linenr"> 9: </span>    ((path "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML")</span>
-<span class="linenr">10: </span>     (scale "100")
-<span class="linenr">11: </span>     (align "center")
-<span class="linenr">12: </span>     (font "TeX")
-<span class="linenr">13: </span>     (linebreaks "false")
-<span class="linenr">14: </span>     (autonumber "AMS")
-<span class="linenr">15: </span>     (indent "0em")
-<span class="linenr">16: </span>     (multlinewidth "85%")
-<span class="linenr">17: </span>     (tagindent ".8em")
-<span class="linenr">18: </span>     (tagside "right"))))
-<span class="linenr">19: </span> '(org-html-postamble nil)
-<span class="linenr">20: </span> '(org-html-postamble-format nil)
-<span class="linenr">21: </span> '(org-html-preamble nil)
-<span class="linenr">22: </span> '(org-html-with-latex (quote mathjax))
-<span class="linenr">23: </span> '(org-html-xml-declaration nil)
+<pre class="src src-elisp"><span class="linenr"> 1: </span>'(org-html-creator-string "")
+<span id="coderef-html5" class="coderef-off"><span class="linenr"> 2: </span>'(org-html-doctype "html5")</span>
+<span class="linenr"> 3: </span>'(org-html-head-include-default-style nil)
+<span class="linenr"> 4: </span>'(org-html-head-include-scripts nil)
+<span class="linenr"> 5: </span>'(org-html-htmlize-output-type nil)
+<span class="linenr"> 6: </span>'(org-html-infojs-template "")
+<span class="linenr"> 7: </span>'(org-html-mathjax-options
+<span class="linenr"> 8: </span>  (quote
+<span id="coderef-mathjax" class="coderef-off"><span class="linenr"> 9: </span>   ((path "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML")</span>
+<span class="linenr">10: </span>    (scale "100")
+<span class="linenr">11: </span>    (align "center")
+<span class="linenr">12: </span>    (font "TeX")
+<span class="linenr">13: </span>    (linebreaks "false")
+<span class="linenr">14: </span>    (autonumber "AMS")
+<span class="linenr">15: </span>    (indent "0em")
+<span class="linenr">16: </span>    (multlinewidth "85%")
+<span class="linenr">17: </span>    (tagindent ".8em")
+<span class="linenr">18: </span>    (tagside "right"))))
+<span class="linenr">19: </span>'(org-html-postamble nil)
+<span class="linenr">20: </span>'(org-html-postamble-format nil)
+<span class="linenr">21: </span>'(org-html-preamble nil)
+<span class="linenr">22: </span>'(org-html-with-latex (quote mathjax))
+<span class="linenr">23: </span>'(org-html-xml-declaration nil)
 </pre>
 </div>
 
@@ -68,7 +68,7 @@ For hosting this web page, as of 2020 I am using github pages. I can maintain th
 </ul>
 
 <p>
-Then I run the following script adapted from <a href="https://emacs.stackexchange.com/questions/7601/how-to-load-all-el-files-at-start-up">here</a> to export all the org files in the directory to html.
+Then I run the following script adapted from <a href="https://emacs.stackexchange.com/a/7605">here</a> to export all the org files in the directory to html.
 </p>
 
 <div class="org-src-container">
