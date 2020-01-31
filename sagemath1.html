@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2020-01-30 qui 21:09 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Installing SageMath on Ubuntu 18.04 part 1</title>
+<meta name="generator" content="Org mode">
+</head>
+<body>
+<div id="content">
+<h1 class="title">Installing SageMath on Ubuntu 18.04 part 1</h1>
+<p>
+Lately I have decided that I wanted to move away from Wolfram Mathematica tool set, although part of my present research rely on it. I was feeling that there was not many positive aspects to it when compared to competitors like Maple and SageMath, other than the fact that I can get it quite cheaply at the moment.
+That will certainly change in the future, so I decided to plan and move away from this tooling and migrate to a more open envorinment. That was why I decided to go with SageMath.
+</p>
+
+<p>
+Motivations aside, what really triggered me was the fact I wanted to set up a org file in Emacs with most of my work including numerics and symbolic calculations and export it to pdf or html^<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>. Orgmode really hits the nail at this one but it was really saddening to see the state of ob-mathematica^<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>, I had a really bad time with it although I did get to work with Jupyter Notebooks. One of the most positive aspects of SageMath was the fact that both <a href="https://github.com/sagemath/sage-shell-mode">sage-shell-mode</a> and <a href="https://github.com/sagemath/ob-sagemath">ob-sage</a> exist, I was pretty excited to start working on getting started on it.
+</p>
+
+<p>
+Now for the installation. This version of Ubuntu was really odd to install SageMath at, I went looking for places to start and readily found their <a href="https://www.sagemath.org/">website</a> and <a href="https://www.sagemath.org/download-linux.html">binaries for linux</a>.
+After downloading I installed in the usual way, by first unpacking the tarball
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">tar -xvjf sage-9.0-Ubuntu_18.04-x86_64.tar.bz2
+</pre>
+</div>
+
+<p>
+Then executing with 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">./sage
+</pre>
+</div>
+
+<p>
+But unfortunetely I had problems permission problems installing this way. I thought then that I had been lucky to find this <a href="https://ubuntuforums.org/showthread.php?t=987954">tutorial</a>, following it though and making sure to replace the deprecated command 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">gksu gedit /usr/local/bin/sage
+</pre>
+</div>
+
+<p>
+with 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">gedit admin:///usr/local/bin/sage
+</pre>
+</div>
+
+<p>
+Resulted in same as above. Then finally I head to the good &amp; old package manager
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">sudo apt install sagemath
+</pre>
+</div>
+
+<p>
+Still no joy. Will I be able to install SageMath to replace Mathematica in anytime soon? Let us hope so.
+</p>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">To share it with you, of course.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">I guess paid software does not grow roots in the open source envorinment, huh.</p></div></div>
+
+
+</div>
+</div></div>
+</body>
+</html>
