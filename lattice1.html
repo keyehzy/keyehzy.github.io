@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2020-02-06 qui 15:16 -->
+<!-- 2020-02-06 qui 15:21 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Solving lattice models &#x2014; Part 1</title>
@@ -45,6 +45,13 @@ Today we are solving some square lattice models numerically. From the notes we k
 </pre>
 </div>
 
+\begin{align}
+  H = -\frac{t}{2}\sum_{i}^{N} c_{\sigma,i+1}^{\dagger} c_{\sigma,i} + \mbox{h.c.}
+\end{align}
+\begin{align}
+  H = -\frac{t}{2}\sum_{i}^{N} c_{\sigma,i+1}^{\dagger} c_{\sigma,i} + \mbox{h.c.}
+\end{align}
+
 <p>
 where for the closed system we can Fourier Transform<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> to
 </p>
@@ -55,6 +62,10 @@ where for the closed system we can Fourier Transform<sup><a id="fnr.1" class="fo
 \end{align}
 </pre>
 </div>
+
+\begin{align}
+  H = \sum_{k} \left( -t \cos k a\right) c_{\sigma,k}^{\dagger} c_{\sigma,k}
+\end{align}
 
 <p>
 We can just ignore the \(\sigma\) for now. In this form the Hamiltonian is called ´diagonalized´. The eigenvalues are simply the cosine function and can be easily plotted in the first Brillouin zone<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>.
@@ -71,7 +82,7 @@ plot(-t * cos(k*a), \
 </div>
 
 <figure>
-<img src="file:///home/matheus/.sage/temp/matheus-Aspire-A315-53/15294/tmp_638ks2gv.png" alt="tmp_638ks2gv.png">
+<img src="file:///home/matheus/.sage/temp/matheus-Aspire-A315-53/15294/tmp_6d6rd78c.png" alt="tmp_6d6rd78c.png">
 
 <figcaption><span class="figure-number">Figure 1: </span>Energy dispersion for the simplest square lattice model.</figcaption>
 </figure>
@@ -88,6 +99,11 @@ We could add the chemical potential to this simple model
 </pre>
 </div>
 
+\begin{align}
+  H =-\frac{t}{2}\sum_{i}^{N} \left(c_{\sigma,i+1}^{\dagger} c_{\sigma,i} 
+  + \mbox{h.c.} \right) - \mu \sum_{i}^{N}c_{\sigma,i}^{\dagger} c_{\sigma,i}
+\end{align}
+
 <p>
 the result would be just a shift in the energy.
 </p>
@@ -98,6 +114,10 @@ the result would be just a shift in the energy.
 \end{align}
 </pre>
 </div>
+
+\begin{align}
+  H = \sum_{k} \left(\mu-t \cos k a\right) c_{\sigma,k}^{\dagger} c_{\sigma,k}
+\end{align}
 
 <p>
 resulting in
@@ -114,7 +134,7 @@ plot(mu -t * cos(k*a), \
 </div>
 
 <figure>
-<img src="file:///home/matheus/.sage/temp/matheus-Aspire-A315-53/15294/tmp_7c_204xd.png" alt="tmp_7c_204xd.png">
+<img src="file:///home/matheus/.sage/temp/matheus-Aspire-A315-53/15294/tmp_1g4ohx5q.png" alt="tmp_1g4ohx5q.png">
 
 <figcaption><span class="figure-number">Figure 2: </span>Energy dispersion for the simplest square lattice model with chemical potential \(\mu = 1\).</figcaption>
 </figure>
@@ -129,6 +149,10 @@ So far, so good. Note that for D-dimensional square lattice with chemical potent
 \end{align}
 </pre>
 </div>
+
+\begin{align}
+  H_D = \sum_{\vec{k}} \left(\mu-t \sum_{j}^{D}\cos k_j a\right) c_{\sigma,\vec{k}}^{\dagger} c_{\sigma,\vec{k}}
+\end{align}
 
 <p>
 Where \(k_j\) is the jth element of the quasi-momentum vector \(\vec{k} = \left( k_1, k_2, \ldots, k_D\right)\). 
