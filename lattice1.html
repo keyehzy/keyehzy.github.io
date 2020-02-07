@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2020-02-06 qui 16:44 -->
+<!-- 2020-02-07 sex 10:41 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Solving lattice models &#x2014; Part 1</title>
 <meta name="generator" content="Org mode">
-<style type="text/css">body{ margin-left:3in; margin-right:3in; }</style>
+<style type="text/css">body{ padding-left: 50px; padding-right: 50px; }</style>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "center",
@@ -70,7 +70,7 @@ where for the closed system we can Fourier Transform<sup><a id="fnr.1" class="fo
 We can just ignore the \(\sigma\) for now. In this form the Hamiltonian is called ´diagonalized´. The eigenvalues are simply the cosine function and can be easily plotted in the first Brillouin zone<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>.
 </p>
 <div class="org-src-container">
-<pre class="src src-sage" id="orgc6d167b">k,t,a = var('k','t','a')
+<pre class="src src-sage" id="orga0aa097">k,t,a = var('k','t','a')
 t = a = 1
 p =plot(-t * cos(k*a), \
      (k, -pi/a, pi/a), \
@@ -84,6 +84,7 @@ p.save('./tmp/ener_disp_sq_mu=0.svg')
 <object type="image/svg+xml" data="./tmp/ener_disp_sq_mu=0.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 
+<figcaption><span class="figure-number">Figure 1: </span>Energy dispersion for the simplest square lattice model.</figcaption>
 </figure>
 
 <p>
@@ -122,7 +123,7 @@ the result would be just a shift in the energy.
 resulting in
 </p>
 <div class="org-src-container">
-<pre class="src src-sage" id="org1bf82b1">k,t,a,mu = var('k','t','a','mu')
+<pre class="src src-sage" id="org7c0c0ef">k,t,a,mu = var('k','t','a','mu')
 mu = t = a = 1
 p=plot(mu -t * cos(k*a), \
      (k, -pi/a, pi/a), \
@@ -163,7 +164,7 @@ We could then try to solve this model with an open system, that is, we cannot us
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sage" id="org3ba9678">import numpy as np
+<pre class="src src-sage" id="org2a75eba">import numpy as np
 import matplotlib.pyplot as plt
 
 t = 1.0
@@ -217,21 +218,39 @@ In the next blog posts we will see the connection of theses ´edges states´ wit
 <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
 To go to momentum space we make the Fourier Transform of the creation and annihilation operators in the following way
 </p>
+<div class="org-src-container">
+<pre class="src src-latex">\begin{align}
+  a_{\sigma,i} = \frac{1}{\sqrt{N}} \sum_{k} e^{i k x_i} a_{\sigma,k}
+\end{align}
+</pre>
+</div>
+
 \begin{align}
-a_{\sigma,i} = \frac{1}{\sqrt{N}} \sum_{k} e^{i k x_i} a_{\sigma,k}
+  a_{\sigma,i} = \frac{1}{\sqrt{N}} \sum_{k} e^{i k x_i} a_{\sigma,k}
 \end{align}
 
 <p class="footpara">
 and the same for the annihilation one. We see then that the Hamiltonian simplifies a lot in this new basis.
 </p>
 
+<div class="org-src-container">
+<pre class="src src-latex">\begin{align}
+  \hat{H} &amp;= \sum_{i=1}^{N} (-t) \left( \frac{1}{\sqrt{N}} \sum_{k} e^{-i k x_i} a_{\sigma,k}^{\dagger}\right) \left( \frac{1}{\sqrt{N}} \sum_{k'} e^{i k' a} e^{i k' x_i} a_{\sigma,k'}\right) + \mbox{h.c.} \\
+  &amp;= \sum_{i=1}^{N} (-t) \frac{1}{N} \sum_{k,k'} e^{i k'a} e^{i (k'-k) x_i} a_{\sigma,k}^{\dagger}a_{\sigma,k'} + \mbox{h.c.}\\
+  &amp;= (-t) \sum_{k,k'} e^{i k'a} \delta_{k,k'} a_{\sigma,k}^{\dagger}a_{\sigma,k'} + \mbox{h.c.} = (-t) \sum_{k} 2 \cos (k a) a_{\sigma,k}^{\dagger} a_{\sigma,k}
+\end{align}
+</pre>
+</div>
+
 \begin{align}
-\hat{H} &= \sum_{i=1}^{N} (-t) \left( \frac{1}{\sqrt{N}} \sum_{k} e^{-i k x_i} a_{\sigma,k}^{\dagger}\right) \left( \frac{1}{\sqrt{N}} \sum_{k'} e^{i k' a} e^{i k' x_i} a_{\sigma,k'}\right) + \mbox{h.c.} \\
-&= \sum_{i=1}^{N} (-t) \frac{1}{N} \sum_{k,k'} e^{i k'a} e^{i (k'-k) x_i} a_{\sigma,k}^{\dagger}a_{\sigma,k'} + \mbox{h.c.}\\
-&= (-t) \sum_{k,k'} e^{i k'a} \delta_{k,k'} a_{\sigma,k}^{\dagger}a_{\sigma,k'} + \mbox{h.c.} = (-t) \sum_{k} 2 \cos (k a) a_{\sigma,k}^{\dagger} a_{\sigma,k}
+  \hat{H} &= \sum_{i=1}^{N} (-t) \left( \frac{1}{\sqrt{N}} \sum_{k} e^{-i k x_i} a_{\sigma,k}^{\dagger}\right) \left( \frac{1}{\sqrt{N}} \sum_{k'} e^{i k' a} e^{i k' x_i} a_{\sigma,k'}\right) + \mbox{h.c.} \\
+  &= \sum_{i=1}^{N} (-t) \frac{1}{N} \sum_{k,k'} e^{i k'a} e^{i (k'-k) x_i} a_{\sigma,k}^{\dagger}a_{\sigma,k'} + \mbox{h.c.}\\
+  &= (-t) \sum_{k,k'} e^{i k'a} \delta_{k,k'} a_{\sigma,k}^{\dagger}a_{\sigma,k'} + \mbox{h.c.} = (-t) \sum_{k} 2 \cos (k a) a_{\sigma,k}^{\dagger} a_{\sigma,k}
 \end{align}</div></div>
 
-<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">Here the first Brillouin zone refers to the interval \(\frac{\pi}{a} < k < \frac{\pi}{a}\).</p></div></div>
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+Here the first Brillouin zone refers to the interval \(\frac{\pi}{a} < k < \frac{\pi}{a}\).
+</p></div></div>
 
 
 </div>
