@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+      <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+      <channel>
+         <title>Matheus Samuel Blog</title>
+         <description>Matheus Samuel Blog</description>
+         <link>https://masamu.github.io</link>
+         <atom:link href="https://masamu.github.io/feed.xml"
+           rel="self" type="application/rss+xml" /><item><title>Solving lattice models --- Part1</title><link>https://masamu.github.io/lattice1.html</link><guid>https://masamu.github.io/lattice1.html</guid><pubDate>Wed,11 Apr 2012 00:00:00 MST</pubDate>
+  </item> <item><title>Solving lattice models --- Part2</title><link>https://masamu.github.io/lattice2.html</link><guid>https://masamu.github.io/lattice2.html</guid><pubDate>Wed,11 Apr 2012 00:00:00 MST</pubDate>
+  </item></channel>
+</rss>
