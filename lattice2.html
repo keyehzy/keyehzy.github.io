@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2020-02-13 qui 16:47 -->
+<!-- 2020-02-14 sex 15:59 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Solving lattice models &#x2014; Part 2</title>
@@ -38,26 +38,23 @@
 <h1 class="title">Solving lattice models &#x2014; Part 2</h1>
 </header><p>
 Following from the last blog, I want now to introduce the concept of a lattice containing two kind of atoms.
-One way of doing that is to consider a linear chain with atoms.
-</p>
-
-<p>
-Following the notation of the last blog, we can describe such system by a Hamiltonian under the approximation for second-neighbors.
+One way of doing that is to consider a linear chain with atoms and distinguish them by how the interact with their neighboring atoms. We can model that an atom of kind ´A´ hops to another atom of kind ´B´ by \(t_1\) and atoms of same kind by \(t_2\).
+As in the notation of the last blog, we can describe such system by a Hamiltonian under the approximation for second-neighbors.
 </p>
 
 <div class="latex">
 \begin{align}
-  H = -\mu\sum_{i}^{N} \left( a_{\sigma,i}^{\dagger} a_{\sigma,i} + 
+  H = -\mu\sum_{i}^{N} \left( a_{\sigma,i}^{\dagger} a_{\sigma,i} +
   b_{\sigma,i}^{\dagger} b_{\sigma,i}\right) +
   -\frac{t_1}{2} \sum_{i}^{N} \left(b_{\sigma,i+1}^{\dagger} a_{\sigma,i} +\mbox{h.c.} \right) +
-  -\frac{t_2}{2}\sum_{i}^{N-1} a_{\sigma,i+2}^{\dagger} a_{\sigma,i} + 
+  -\frac{t_2}{2}\sum_{i}^{N-1} a_{\sigma,i+2}^{\dagger} a_{\sigma,i} +
   b_{\sigma,i+2}^{\dagger} b_{\sigma,i}  + \mbox{h.c.}
 \end{align}
 
 </div>
 
 <p>
-Considering now a closed system, we can use the Fourier transform to change to momentum space, remember that this simplified the calculation in the previous system. The calculations are exactly the same as in the previous blog post, except for the second-neighboring term
+A closer inspection of this Hamiltonian makes its interpretation easy. The first term is just the chemical potential, the second term is a non-diagonal element of matrix that connects atoms of different kind and the third is connection two atoms of same kind. Considering now a closed system, we can use the Fourier transform to change to momentum space, remember that this simplified the calculation in the previous system. The calculations are exactly the same as in the previous blog post, except for interaction between atoms of different kind and the second-neighboring term
 </p>
 <div class="latex">
 \begin{align}
@@ -81,14 +78,14 @@ Therefore we can write the Hamiltonian as
 </div>
 
 <p>
-We see now that the introduction of another ´kind´ of atom in the chain translates to an off-diagonal term after Fourier transforming the Hamiltonian.
+We see now that the introduction of another ´kind´ of atom in the chain translates to an off-diagonal term after Fourier transforming the Hamiltonian.<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
 </p>
 
-<div class="latex">
+<div class="latex" id="eq:hamiltonian">
 \begin{align}
-H = 
-\left(\begin{array}{rrrr}                                      
--t_{2} \cos\left(a k\right) + \mu & t_{1} e^{\left(\frac{1}{2} i \, a k\right)} & 0 & 0 & \dots \\                                           
+H =
+\left(\begin{array}{rrrr}
+-t_{2} \cos\left(a k\right) + \mu & t_{1} e^{\left(\frac{1}{2} i \, a k\right)} & 0 & 0 & \dots \\
 t_{1} e^{\left(-\frac{1}{2} i \, a k\right)} & -t_{2} \cos\left(a k\right) + \mu & t_{1} e^{\left(\frac{1}{2} i \, a k\right)} & 0 & \dots  \\
 0 & t_{1} e^{\left(-\frac{1}{2} i \, a k\right)} & -t_{2} \cos\left(a k\right) + \mu & t_{1} e^{\left(\frac{1}{2} i \, a k\right)} & \dots \\
 0 & 0 & t_{1} e^{\left(-\frac{1}{2} i \, a k\right)} & -t_{2} \cos\left(a k\right) + \mu & \dots \\
@@ -100,10 +97,7 @@ t_{1} e^{\left(-\frac{1}{2} i \, a k\right)} & -t_{2} \cos\left(a k\right) + \mu
 
 <p>
 If you take a closer look at the matricial form of the Hamiltonian above, you will notice that while it is not in diagonal form anymore, it is almost-diagonal, meaning that it is block-diagonal.
-</p>
-
-<p>
-To understand what is happening we can proceed in the following way. 
+To understand what is happening we can proceed in the following way.
 For now we will let \(\mu = 0\) and \(t_2 = a = 1\) and \(t_1 = t\), we can define the following objects
 </p>
 
@@ -115,7 +109,7 @@ For now we will let \(\mu = 0\) and \(t_2 = a = 1\) and \(t_1 = t\), we can defi
           t e^{\left(-\frac{1}{2} i \,k\right)} & -\cos\left(a k\right)\\
         \end{array}\right)
   \qquad
-  T' = 
+  T' =
   \left(\begin{array}{rr}
           0 & 0\\
           t e^{\left(-\frac{1}{2} i \,k\right)} & 0\\
@@ -142,7 +136,7 @@ and rewrite the Hamiltonian in the following way
 <p>
 Then we can perform the following operation.
 First we eigendecompose \(H'\) such that \(H' = O H'' O^{\dagger}\) where \(H''\) is now a diagonal matrix.
-Then, in this basis, \(T' = O^{\dagger} T'' O\) and we can rewrite the Hamiltonian as
+Then, in this basis, \(T' = O T'' O^{\dagger}\) and we can rewrite the Hamiltonian as
 </p>
 
 <div class="latex">
@@ -157,27 +151,27 @@ Then, in this basis, \(T' = O^{\dagger} T'' O\) and we can rewrite the Hamiltoni
 </div>
 
 <p>
-That is 
+That is
 </p>
 
 <div class="latex">
 \begin{align}
   H'' =
-  \left(\begin{array}{rr}       
+  \left(\begin{array}{rr}
           -t - \cos\left(k\right) & 0 \\
           0 & t - \cos\left(k\right)\\
-        \end{array}\right)            
+        \end{array}\right)
 
   \qquad
-  O = \left(\begin{array}{rr}                                                     
-              1 & 1 \\                                                                    
+  O = \left(\begin{array}{rr}
+              1 & 1 \\
               -e^{\left(-\frac{1}{2} i \, k\right)} & e^{\left(-\frac{1}{2} i \, k\right)}\\
             \end{array}\right)
   \qquad
   T'' = \left(\begin{array}{rr}
-                -t & -t \\             
-                t & t\\  
-              \end{array}\right)     
+        t e^{\left(-\frac{1}{2} i \, k\right)} & -t \\
+        t e^{\left(-i \, k\right)} & -t e^{\left(-\frac{1}{2} i \, k\right)}
+        \end{array}\right)
 \end{align}
 
 </div>
@@ -189,12 +183,12 @@ Now by <a href="https://en.wikipedia.org/wiki/Perturbation_theory_(quantum_mecha
 
 <div class="latex">
 \begin{align}
-  E_0 = \bra{\psi_0} T'' \ket{\psi_0}  =
+  E_0^1 = \bra{\psi_0} T'' \ket{\psi_0}  =
   \left( \begin{array}{cc}
            1,\,-e^{\left(\frac{1}{2} i \, k\right)}
          \end{array}\right)
-  \left(\begin{array}{rr}                                             
-          t e^{\left(-\frac{1}{2} i \, k\right)} & -t \\                      
+  \left(\begin{array}{rr}
+          t e^{\left(-\frac{1}{2} i \, k\right)} & -t \\
           t e^{\left(-i \, k\right)} & -t e^{\left(-\frac{1}{2} i \, k\right)}\\
         \end{array}\right)
   \left( \begin{array}{cc}
@@ -202,12 +196,12 @@ Now by <a href="https://en.wikipedia.org/wiki/Perturbation_theory_(quantum_mecha
            -e^{\left(-\frac{1}{2} i \, k\right)}\\
          \end{array}\right)
   = 0\\
-  E_1 = \bra{\psi_1} T'' \ket{\psi_1}  =
+  E_1^1 = \bra{\psi_1} T'' \ket{\psi_1}  =
   \left( \begin{array}{cc}
            1,\,e^{\left(\frac{1}{2} i \, k\right)}
          \end{array}\right)
-  \left(\begin{array}{rr}                                             
-          t e^{\left(-\frac{1}{2} i \, k\right)} & -t \\                      
+  \left(\begin{array}{rr}
+          t e^{\left(-\frac{1}{2} i \, k\right)} & -t \\
           t e^{\left(-i \, k\right)} & -t e^{\left(-\frac{1}{2} i \, k\right)}\\
         \end{array}\right)
   \left( \begin{array}{cc}
@@ -221,8 +215,29 @@ Now by <a href="https://en.wikipedia.org/wiki/Perturbation_theory_(quantum_mecha
 </div>
 
 <p>
-This calculation also justifies our previous assumption of neglecting \(T''\), we see that up to first-order it does not make any difference to keep it or not.
+This calculation also justifies our previous assumption of neglecting \(T''\), we see that up to first-order it does not make any difference to keep it or not.<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>
 </p>
+
+
+<figure>
+<img src="./tmp/split_due_to_second_atom.gif" alt="split_due_to_second_atom.gif">
+
+<figcaption><span class="figure-number">Figure 1: </span>Due to the presence of the second atom, the energy dispersion splits in two with the difference equal to \(2 t\).</figcaption>
+</figure>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+Note that we change \(a\to \frac{a}{2}\) just so it looks nice, there nothing wrong with that&#x2026;
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+We can also see it in another way, if we solve <a href="#orgc942b26">1</a> numerically for \(n\) very large, we would see that there are the eigenvalues \(-\cos k \pm t\) plus \(n-2\) eigenvalues that oscillate a lot. This gives us a hope that when \(n\to \infty\) these eigenvalues would die off and only the two first would survive.
+</p></div></div>
+
+
 </div>
+</div></div>
 </body>
 </html>
