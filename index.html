@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2020-02-14 sex 16:06 -->
+<!-- 2020-02-14 sex 16:10 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Blog posts</title>
@@ -18,23 +18,6 @@
 <li><a href="./lattice1.html">Solving lattice models &#x2014; Part 1</a></li>
 <li><a href="./lattice2.html">Solving lattice models &#x2014; Part 2</a></li>
 </ul>
-
-<div class="org-src-container">
-<pre class="src src-python">name = "Matheus Samuel Blog"
-link = "https://masamu.github.io"
-
-body = f"&lt;?xml version=\"1.0\" encoding=\"utf-8\" ?&gt;\n&lt;rss version=\"2.0\"&gt;\n &lt;channel&gt;\n&lt;title&gt;{name}&lt;/title&gt;\n&lt;description&gt;{name}&lt;/description&gt;\n&lt;link&gt;{link}&lt;/link&gt;\n"
-
-items = [["Solving lattice models --- Part 1", "lattice1.html", "Thr,13 Feb 2020 16:00:00 -0300"],
-         ["Solving lattice models --- Part 2", "lattice2.html", "Fri,14 Feb 2020 16:04:00 -0300"]]
-
-for item in items:
-  body += f"\n&lt;item&gt;\n&lt;title&gt;{item[0]}&lt;/title&gt;\n&lt;link&gt;{link}/{item[1]}&lt;/link&gt;\n&lt;guid&gt;{link}/{item[1]}&lt;/guid&gt;\n&lt;pubDate&gt;{item[2]}&lt;/pubDate&gt;\n&lt;/item&gt;\n"
-
-body += "&lt;/channel&gt;\n&lt;/rss&gt;"
-return body
-</pre>
-</div>
 </div>
 </body>
 </html>
