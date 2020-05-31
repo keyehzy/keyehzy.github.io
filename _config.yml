@@ -2,7 +2,7 @@ title: M. Samuel Blog
 email: msamuel@aluno.puc-rio.br
 description: Thoughts on physics and math, mainly.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://masamu.github.io/"
+url: "https://masamu.github.io"
 twitter_username: masamu    
 github_username:  masamu
 
