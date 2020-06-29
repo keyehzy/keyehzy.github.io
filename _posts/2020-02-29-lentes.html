@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-06-29 Mon 16:54 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ótica geométrica</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Ótica geométrica</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org2025391">1. Breve motivação  histórica</a></li>
+<li><a href="#orgff9bb9d">2. Ótica geométrica</a></li>
+<li><a href="#org6258def">3. Espelhos retos e lei de reflexão</a></li>
+<li><a href="#org721e678">4. Espelhos esféricos</a></li>
+<li><a href="#org8e12ce7">5. Lei da difração (refração)</a></li>
+<li><a href="#orgf555853">6. Lentes &#x2014; Lâminas de faces paralelas</a></li>
+<li><a href="#org6f93f07">7. Lentes esféricas</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2025391" class="outline-2">
+<h2 id="org2025391"><span class="section-number-2">1</span> Breve motivação  histórica</h2>
+<div class="outline-text-2" id="text-1">
+<hr />
+<p>
+Os estudos dos raios de luz e de como eles interagem com espelhos foi fundamental para o desenvolvimento de tecnologias como: Telescópios, câmeras, óculos e etc. Um dos desmembramentos dessa tecnologia foi o aumento da capacidade de navegação, já que com lentes era possível ver mais longe e também ver entrelas no céu mais facilmente.
+A primeira civilação a estudar lentes a fundo foram os gregos, apesar de que os egípios já a utilizam. Os gregos (principalmente Euclides) observavam que um raio luz que incidia sobre uma poça de água e, reflitindo sobre essa superfície por um ângulo, chegava ao seus olhos, fazendo um caminho mínimo. O primeiro povo a realmente levar a fundo a teoria de ótica foram os árabes no final do primeiro milênio, principalmente Alhazen e Avicenna.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgff9bb9d" class="outline-2">
+<h2 id="orgff9bb9d"><span class="section-number-2">2</span> Ótica geométrica</h2>
+<div class="outline-text-2" id="text-2">
+<hr />
+<p>
+Na ótica geométrica, utilizamos raios de luz para descrever a luz que chega um ponto à outro. Esses raios de luz não possuem começo nem fim, são apenas uma representação geométrica do trajeto da luz.  
+</p>
+
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-18_15-46-34_screenshot.png" alt="2020-06-18_15-46-34_screenshot.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Exemplo de luz entre árvores</p>
+</div>
+
+
+<p>
+Como podemos ver na figura acima, podemos pensar que luz se propagar como esses raios de luz. Isso luz leva a entender alguns fenômenos da natureza. Um exemplo é como podemos enxergar, um fato que é fundamental para entender o funcionamento da visão é que os olhos são <span class="underline">receptores</span> dos raios de luz. Usando esse fato podemos desenhar uma figura utilizando  raios de luz como a de baixo 
+</p>
+
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-18_16-17-49_screenshot.png" alt="2020-06-18_16-17-49_screenshot.png" />
+</p>
+</div>
+
+
+<p>
+Podemos ver que os raios de luz são projetados em nossos olhos indo de linhas retas à partir dos objetos. Mais detalhes de como o nosso olhos realmente funciona virá mais tarde quando falarmos de lentes. Outro efeito que podemos explicar usando raios de luz é a reflexão. A lei de reflexão diz que um raio de luz incidindo sobre uma superfície plana reflete com o mesmo ângulo de incidência. Na figura seria algo como  
+</p>
+
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-18_16-26-16_screenshot.png" alt="2020-06-18_16-26-16_screenshot.png" />
+</p>
+</div>
+
+
+<p>
+Então imaginamos que estamos olhando para um  lago, intuitivamente sabemos que quando a água está calma podemos ver a reflexão do céu na superfície do lago, e isso é explicado pela lei de reflexão da seguinte forma.
+</p>
+
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-18_16-17-36_screenshot.png" alt="2020-06-18_16-17-36_screenshot.png" />
+</p>
+</div>
+
+<p>
+Vemos que a "imagem" que vemos na superfície do lado não é a imagem verdadeia e sim uma imagem <span class="underline">projetada</span> na superfície do lado e ela está de cabeça para baixo.
+</p>
+
+<p>
+<b>Exercício: Por que a <span class="underline">imagem virtual</span> é projetada de cabeça para baixo?</b>
+<b>Exercício: O que aconteceria se a água estivesse turbulenta e se movendo, ou seja, por que você não consegue ver reflexão em, por exemplo, um rio correndo?</b>
+</p>
+
+<p>
+Um terceiro efeito que a ótica geométrica explica são as <span class="underline">câmaras escuras</span>, que é o princípio das câmaras fotográficas (e dos seus olhos também!), voltaremos a esse tópico depois.
+</p>
+
+
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-29_14-31-27_screenshot.png" alt="2020-06-29_14-31-27_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6258def" class="outline-2">
+<h2 id="org6258def"><span class="section-number-2">3</span> Espelhos retos e lei de reflexão</h2>
+<div class="outline-text-2" id="text-3">
+<hr />
+<p>
+Espelhos foram inventados para tomar vantagem do fato que luz segue raios de luz. Um espelho (perfeito) é uma superfície que reflete toda luz que incide de acordo com a lei de reflexão. É o  caso da superfície parada do lago, só que a diferença é que o espelho reflete perfeitamente a luz que incide, já no caso do lado veríamos uma imagem um pouco fraca. 
+A parte simples do espelho plano é que precisamos saber apenas a <span class="underline">lei de reflexão</span> para resolver o problema. Vamos supôr que colocamos uma séries de espelhos uns apontando para os outros e queremos saber o que vai acontecer quando mirarmos um laser nele.
+</p>
+
+
+
+<div class="figure">
+<p><img src="Espelhos/2020-06-18_16-51-16_screenshot.png" alt="2020-06-18_16-51-16_screenshot.png" />
+</p>
+</div>
+
+<p>
+<b>Exercício: Você está de frente à um espelho plano, qual é a distância que você deve ficar do espelho para ver os seus pés (H = 1,80m, d = 1,50m)?  Dica: Use a lei de reflexão. Ache também o ângulo de reflexão para os dados do problema.</b>
+</p>
+
+
+<div class="figure">
+<p><img src="Espelhos/2020-06-18_17-29-50_screenshot.png" alt="2020-06-18_17-29-50_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org721e678" class="outline-2">
+<h2 id="org721e678"><span class="section-number-2">4</span> Espelhos esféricos</h2>
+<div class="outline-text-2" id="text-4">
+<hr />
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-22_16-24-12_screenshot.png" alt="2020-06-22_16-24-12_screenshot.png" />
+</p>
+</div>
+
+<p>
+Um espelho esférico é aquele que possui uma curvatura, isto quer dizer que ele é diferente do espelho plano que vimos anteriormente porém algumas partes, como a lei de reflexão, ainda podem ser usadas. Este espelho possui dois "tipos" de curvatura: para dentro, chamado de côncavo, e para fora, chamado convexo. Podemos pensar em espelhos côncavos e convexos somente mudando o ponto de vista por onde olhamos o espelho. 
+Os espelhos esféricos são caracterizados por um eixo central, um ângulo de abertura \(\alpha\), um raio de curvatura \(R\), um centro de curvatura \(C\) e um ponto focal \(F\). Chamamos a distância \(\overline{VF}\) de \(f\) e a distância \(\overline{VC}\) de R, também é o raio do círculo. Para os espelhos esféricos 
+</p>
+
+\begin{align*}
+\overline{VF} = \frac{\overline{VC}}{2} \quad\to f = \frac{R}{2}
+\end{align*}
+
+<p>
+Vamos primeiro descrever o espelho esférico côncavo. A característica central deste tipo de espelho é que <span class="underline">qualquer raio de luz incidindo paralelo a ele</span> são apontados para o <span class="underline">ponto focal</span>. Então este ponto serve como um divisor de águas para o espelho côncavo como veremos mais à frente. 
+</p>
+
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-22_16-24-26_screenshot.png" alt="2020-06-22_16-24-26_screenshot.png" />
+</p>
+</div>
+
+<p>
+Então, como o ponto focal é aquele onde os raios incidentes são paralelos, os raios <span class="underline">não paralelos</span> estarão à frente ou atrás do ponto focal.
+</p>
+
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-22_16-24-36_screenshot.png" alt="2020-06-22_16-24-36_screenshot.png" />
+</p>
+</div>
+
+<p>
+Então o ponto \(F'\) é chamado de ponto focal virtual, pois ele é não o ponto focal original mas é para onde todos os raios de luz com um certo ângulo vão apontar. Temos ainda qualquer raio de luz que incide sobre o vértice \(V\) é reflito de acordo com a lei de reflexão, e todo raio de luz que passa pelo ponto central \(C\) é refletido nele mesmo.
+Vamos analisar agora o que acontece com reflexão de objetos em relação à sua posição. Suponndo que colocamos um objeto antes do ponto central \(C\). Um raio paralelo partindo deste objeto iria passar pelo focal formando uma imagem conforme a figura
+</p>
+
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-22_16-49-59_screenshot.png" alt="2020-06-22_16-49-59_screenshot.png" />
+</p>
+</div>
+
+<p>
+Já um objeto entre os pontos V e F, um raio paralelos iria também passar por pelo ponto focal porém a imagem seria formada da seguinte forma. 
+</p>
+
+
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-22_16-50-13_screenshot.png" alt="2020-06-22_16-50-13_screenshot.png" />
+</p>
+</div>
+
+<p>
+<b>Exercício: Coloque a seta entre os pontos C e F e veja qual será a projeção</b>
+</p>
+
+<p>
+Para as lentes convexas podemos usar o mesmo método, como veremos abaixo:
+</p>
+
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-29_14-36-13_screenshot.png" alt="2020-06-29_14-36-13_screenshot.png" />
+</p>
+</div>
+
+<p>
+Traçamos primeiro um raio de luz paralelo, que é refletido pelo ponto focal. Depois passamos um raio de luz em direção ao ponto focal, que é refletido em paralelo. Assim podemos ver ondas as duas linhas se conectam, que é onde a projeção da imagem sera feita. Para as lentes convexas então sempre temos uma <span class="underline">imagem virtual, menor e normal</span>.
+</p>
+
+<p>
+É verdade que os objetos formados antes do ponto focal \(F\) formam imagens virtuais, já o pontos após o ponto focal \(F\) formam imagens reais. Esta relação entre a abscissa do objeto sendo observado, sua imagem e o ponto focal é dado pela <b>equação da Gauss</b>:
+</p>
+
+\begin{align}
+\frac{1}{f} = \frac{1}{p} + \frac{1}{p'}
+\end{align}
+
+<p>
+Podemos observar, como nos exemplo anterior que se: \(f > p\) então \(\frac{1}{f} < \frac{1}{p}\) e
+</p>
+
+\begin{align*}
+\frac{1}{f} - \frac{1}{p} < 0
+\end{align*}
+
+<p>
+ou seja \(p' > 0\). Isto quer dizer que a <span class="underline">imagem virtual</span> do objeto é positiva, ou seja ela está na parte de dentro do espelho e a imagem projetada vai ser virtual. Da mesma forma se \(p > f\) então \(\frac{1}{p} < \frac{1}{f}\) e 
+</p>
+
+\begin{align}
+\frac{1}{p} - \frac{1}{f} < 0
+\end{align}
+
+<p>
+ou seja a \(p' < 0\), então a imagem virtual é negativa e a imagem projetada é <span class="underline">real</span>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8e12ce7" class="outline-2">
+<h2 id="org8e12ce7"><span class="section-number-2">5</span> Lei da difração (refração)</h2>
+<div class="outline-text-2" id="text-5">
+<hr />
+<p>
+A luz quando passa de um meio para outro ele muda de direção. Isto pode ser observado quando olhamos para dentro de uma piscina ou um lago. O que vemos é o seguinte:
+</p>
+<p>
+<img src="Lei_da_difração_(refração)/2020-06-29_14-52-15_screenshot.png" alt="2020-06-29_14-52-15_screenshot.png" />
+Quando olhamos para um objeto dentro da água, na verdade não estamos olhando para uma linha reta até o objeto. A água faz com que a luz se curve um pouco para dentro, assim, para ver um o objeto, temos que olhar um pouco para cima dele. Isto ocorre por que a luz quer tomar <span class="underline">o caminho mais curto entre um ponto e outro</span>, e como a água tem mais "coisa" nela que o ar, a luz tem que mudar um pouco a trajetória para corrigir o caminho mais curto. O motivo é que quanto mais "coisa", ou seja, quanto mais <span class="underline">denso</span> o material, mais devagar a luz se propaga dentro deste material. Esse "correção" de curso é dada pelo <b>índice de refração do meio</b>. Dizemos que cada meio (ar, água, vidro, etc..) possui um índice de refração que diz o quanto a luz se curva ao passar por ele.
+</p>
+
+<p>
+Mas como podemos achar o índice refração na prática? Como foi dito anteriormente, o  O índice de refração do meio é obtido a partir da <span class="underline">velocidade de luz no vácuo</span> e a <span class="underline">velocidade de refração no meio</span>. Sabemos que a velocidade na luz no vácuo é <span class="underline">constante</span> 
+</p>
+
+\begin{align*}
+c = 300.000 \thinspace\frac{km}{s}
+\end{align*}
+
+<p>
+E a velocidade da luz no meio depende de <span class="underline">quão denso</span> é esse meio. O conceito de densidade é muito importante para termos intuição sobre este fenômenos.  Por exemplo, sabemos que a água é mais densa que o ar mas o que isso quer dizer? <span class="underline">Dizemos que um material é mais denso que o outro se compararmos as massas dos mesmos volumes destes materials</span>
+</p>
+
+<p>
+Exemplo:  Qual é mais pesado, um metro cúbico de água ou um metro cúbido de areia? Areia, então areia é mais densa que a água.
+</p>
+
+<p>
+Temos então que o índice refração é dado por 
+</p>
+
+\begin{align}
+n = \frac{c}{v_{meio}}
+\end{align}
+
+<p>
+O índice de refração também é relacionado com o ângulo com que a luz faz ao passar de um meio à outro. Esta relação é chamada <b>Lei de Snell-Descartes</b>.
+</p>
+
+\begin{align}
+n_1 \sin \theta_1 = n_2 \sin \theta_2
+\end{align}
+
+<p>
+Vamos então isolar \(\sin \theta_2\) na equação anterior
+</p>
+
+\begin{align*}
+\sin \theta_2 = \frac{n_1}{n_2} \sin \theta_1
+\end{align*}
+
+<p>
+O que acontece se \(n_1 > n_2\), por exemplo \(n_1 = 0.8\) e \(n_2 = 0.2\)? Temos que \(\frac{n_1}{n_2} = 4\) e então
+</p>
+
+\begin{align*}
+\sin \theta_2 = 4 \sin \theta_1
+\end{align*}
+
+<p>
+Isto quer dizer que o ângulo que sai é <b>maior</b> que o ângulo que entrou. Ou seja, nesse caso a refração fez com que o ângulo ficasse mais aberto. No outro case quando temos \(n_2 > n_1\), por exemplo \(n_1 = 0.5\) e \(n_2 = 0.7\) temos \(\frac{n_1}{n_2} = 0.71\) e então
+</p>
+
+\begin{align*}
+\sin \theta_2 = 0.71 \sin \theta_1
+\end{align*}
+
+<p>
+Então o o ângulo que sai é <b>menor</b> que o ângulo que entrou. A refração fez com que os ângulo ficasse mais fechado.
+</p>
+
+<p>
+<b>Exercício: No exemplo de cima da água, a partir do desenho, você diria que \(n_1 > n_2\) ou \(n_2 > n_1\)?</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf555853" class="outline-2">
+<h2 id="orgf555853"><span class="section-number-2">6</span> Lentes &#x2014; Lâminas de faces paralelas</h2>
+<div class="outline-text-2" id="text-6">
+<hr />
+<p>
+O exemplo mais simples de uma lente podemos obter usando uma <span class="underline">lâmina de faces paralelas</span>, como na figura abaixo
+</p>
+<p>
+<img src="Ótica_geométrica/2020-06-29_15-29-53_screenshot.png" alt="2020-06-29_15-29-53_screenshot.png" />
+Vamos dizer que \(n_{ar}=1\) e \(n_{agua}=\frac{4}{3}\), então vamos estudar o que acontece quando a luz passar por esse objeto. Primeiro temos que quando o a luz vai do ar para a água
+</p>
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-29_15-36-09_screenshot.png" alt="2020-06-29_15-36-09_screenshot.png" />
+</p>
+</div>
+
+<p>
+Em seguida o raio de luz vai da água de volta ao ar
+</p>
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-29_15-38-07_screenshot.png" alt="2020-06-29_15-38-07_screenshot.png" />
+</p>
+</div>
+
+<p>
+O que podemos analisar é que \(\theta_1 = \theta_4\) e \(\theta_2 = \theta_3\), ou seja, os ângulos que entram e saem são os mesmo! Para ver como podemos usar isto como a lente vamos olhar a imagem a seguir:
+</p>
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-29_15-47-02_screenshot.png" alt="2020-06-29_15-47-02_screenshot.png" />
+</p>
+</div>
+
+<p>
+Se não tivéssemos a água o trajeto seguido pela água seria o azul, vemos claramente que este raio de luz iria errar o nossos olhos e não veríamos a o pássaro voando. O trajeto passando pela lâmina de água em vermelho corrige o trajeto da luz de forma que conseguimos ver o pássaro voando.
+</p>
+</div>
+</div>
+<div id="outline-container-org6f93f07" class="outline-2">
+<h2 id="org6f93f07"><span class="section-number-2">7</span> Lentes esféricas</h2>
+<div class="outline-text-2" id="text-7">
+<hr />
+<p>
+O que vimos na seção anterior é que colocando um material com um índice de refração diferente do ar altera o trajeto da luz, e podemos utilizar este fenômeno como uma lente. O exemplo anterior era particularmente simples pois lâmina era plana, seu efeito era somente mudar a trajetória do objeto sem alterar o seu formato. O que ocorre com lentes esféricas é que podemos utilizá-las para tanto mudar a trajetória da luz tanto como alterar o formato das imagens sendo projetadas. 
+</p>
+
+<p>
+Vimos na seção de espelhos esféricos que dependendo de onde colocamos o nosso objeto em relação ao foco \(F\) e ao centro \(C\) alteramos propriedades da imagem formada, como seu tamanho, invertida ou não e etc. Existem muitos tipos de lentes, mas precisamos apenas dois tipo de lentes esféricas para entender seus comportamentos
+</p>
+
+<p>
+Vamos olhar primeiro para a lente plano-convexa, primeiro quando a lente é feita de um material mais denso que o ambiente
+</p>
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-29_16-19-31_screenshot.png" alt="2020-06-29_16-19-31_screenshot.png" />
+</p>
+</div>
+
+<p>
+Vemos que, como o raio de luz incide paralelalmente, não sofre refração. Vemos que a parte esférica é bastante diferente do caso do espelho esféricos. O motivo é refração: lembramos que como o vidro é mais denso que o ar, então o ângulo saindo é menor que o ângulo entrando, isto faz com que a lente seja convergente. Conforme a figura, vemos que a luz em paralelo converge para um ponto \(F'\) que é diferente do ponto focal \(F\). No caso que a lente é feita de um material menos denso que o ar temos a seguinte situação
+</p>
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-29_16-24-15_screenshot.png" alt="2020-06-29_16-24-15_screenshot.png" />
+</p>
+</div>
+
+<p>
+Agora então esta lente é divergente, pois a lei de refração diz que o ângulo que sai será maior que o ângulo incidente. Como podemos verificar na figura, o raio de luz é difratado a partir do ponto \(F'\), que agora está do lado esquerdo e é chamado de virtual.
+</p>
+
+<p>
+O outro caso simples é a lente plano-côncava. No caso onde a lente é feita de um material mais denso que o ar temos o seguinte
+</p>
+
+
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-29_16-44-08_screenshot.png" alt="2020-06-29_16-44-08_screenshot.png" />
+</p>
+</div>
+
+<p>
+Vemos que o raio de luz incidindo paralelamente é refratado seguindo o ponto \(F'\), que é virtual, e que a lente é divergente. No caso em que a lente é feita de um material menos denso que o o ar temos o oposto como veremos a seguir
+</p>
+
+
+<div class="figure">
+<p><img src="Ótica_geométrica/2020-06-29_16-45-35_screenshot.png" alt="2020-06-29_16-45-35_screenshot.png" />
+</p>
+</div>
+
+<p>
+Então o raio de luz incidindo paralelamente converge para o ponto \(F'\), que é real. Então a lente é convergente. Podemos contruir as demais lentes esférias, como a biconvexa e bicôncava a partir destas duas.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2020-06-29 Mon 16:54</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
