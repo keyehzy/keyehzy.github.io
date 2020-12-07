@@ -2,9 +2,9 @@ title: M. Samuel Blog
 email: msamuel@aluno.puc-rio.br
 description: Thoughts on physics and math, mainly.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://keyezy.github.io"
-twitter_username: keyezy    
-github_username:  keyezy
+url: "https://keyehzy.github.io"
+twitter_username: keyehzy    
+github_username:  keyehzy
 
 remote_theme: cyevgeniy/jekyll-true-minimal
 plugins:
