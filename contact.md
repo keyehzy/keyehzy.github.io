@@ -4,6 +4,6 @@ title: Contact
 permalink: /contact/
 ---
 
-Github: [My Page](https://github.com/keyezy)
+Github: [My Page](https://github.com/keyehzy)
 
-Twitter:[My Twitter](https://twitter.com/keyezy)
+Twitter:[My Twitter](https://twitter.com/keyehzy)
