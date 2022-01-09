@@ -1,0 +1,142 @@
+/* Fix mobile browsers. */
+@viewport {
+    width: device-width;
+}
+@-ms-viewport {
+    width: device-width;
+}
+@-moz-viewport {
+    width: device-width;
+}
+@-webkit-viewport {
+    width: device-width;
+}
+
+/* Needed for IE 10 mobile and perhaps other browsers. */
+main {
+    display: block;
+}
+
+/* Center the page and make it ~60 characters wide. */
+body {
+    margin: 0;
+}
+
+header > *, main {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80ex;
+}
+
+hr {
+    max-width: 80ex;
+    margin-bottom: -.55em;
+    margin-top: -.55em;
+}
+header, main {
+    padding-top: 1.25em;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+header {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 50ex;
+}
+
+header li {
+    flex-grow: 1;
+    list-style-type: none;
+    text-align: center;
+}
+
+header ul {
+    display: flex;
+    flex-direction: row;
+}
+
+nav {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100ex;
+}
+
+nav li, nav ul {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: .25em;
+    padding-right: .25em;
+}
+nav li {
+    flex-grow: 1;
+    list-style-type: none;
+    text-align: center;
+}
+nav ul {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Make navigation elements more prominent. */
+nav a {
+    text-decoration: none;
+}
+nav li {
+    font-weight: bold;
+}
+
+/* Aesthetic and legibility tweaks. */
+body {
+    background-color: #F4FCFF;
+    color: #111120;
+    font-family:Verdana, Geneva, sans-serif;
+    line-height: 1.35em;
+}
+
+dt {
+    font-weight: bold;
+    margin-bottom: .25em;
+    margin-top: .75em;
+}
+
+dd {
+    margin-left: 1.5em;
+}
+
+h3 {
+    border-bottom: 1pt solid #000000;
+    padding-bottom: .125em;
+}
+
+a:link {
+    text-decoration:none;
+}
+
+a:visited {
+    text-decoration:none;
+}
+
+/* Make a figure's caption attach to its code block. */
+img {
+    margin-right: 1.2em;
+    padding-top: .7em;
+    padding-bottom: .7em;
+    padding-left: .7em;
+    padding-right: .7em;
+}
+
+.card {
+    display: flex;
+    flex-wrap: wrap;
+}
+.card .text-container {
+    flex-grow: 2;
+    flex-shrink: 1;
+    flex-basis: 0%;
+    min-width: 250px;
+}
+
