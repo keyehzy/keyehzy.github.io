@@ -12,14 +12,30 @@
     width: device-width;
 }
 
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #111;
+    color: #bbb;
+  }
+}
+
 /* Needed for IE 10 mobile and perhaps other browsers. */
 main {
     display: block;
 }
 
 /* Center the page and make it ~60 characters wide. */
+
+/* Aesthetic and legibility tweaks. */
 body {
-    margin: 0;
+    background-color: #F4FCFF;
+    color: #111120;
+    font-family:Verdana, Geneva, sans-serif;
+    font-size: large
+    line-height: 1.5em;
+    margin: 0 auto;
+    max-width: 40em;
+    padding: 0 1em;
 }
 
 header > *, main {
@@ -87,14 +103,6 @@ nav a {
 }
 nav li {
     font-weight: bold;
-}
-
-/* Aesthetic and legibility tweaks. */
-body {
-    background-color: #F4FCFF;
-    color: #111120;
-    font-family:Verdana, Geneva, sans-serif;
-    line-height: 1.35em;
 }
 
 dt {
